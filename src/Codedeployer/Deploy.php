@@ -10,6 +10,7 @@ class Deploy
 {
     public function run()
     {
+        die("By fire be purged\n\n");
         $rootDir = __DIR__ . '/..';
         $exitCode = 1;
 
