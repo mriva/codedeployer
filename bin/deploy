@@ -25,5 +25,10 @@ require CODEDEPLOYER_COMPOSER_INSTALL;
 $reflection = new \ReflectionClass(ClassLoader::class);
 $rootDir = dirname($reflection->getFileName(), 3);
 
+if ($argv[1] == '--setup') {
+    echo "SETUP\n";
+    die("Setting up\n\n");
+}
+
 $deployer = new Deploy();
 $deployer->run($rootDir);
