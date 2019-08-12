@@ -1,16 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-echo __DIR__;
+echo __DIR__, "\n";
 
-foreach (array(__DIR__ . '/../../../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
-    echo $file, "\n";
-    if (file_exists($file)) {
-        echo "FOUND\n";
-        define('CODEDEPLOYER_COMPOSER_INSTALL', $file);
+$file = __DIR__ . '/../../autoload.php';
 
-        break;
-    }
+if (file_exists($file)) {
+    define('CODEDEPLOYER_COMPOSER_INSTALL', $file);
 }
 
 unset($file);
