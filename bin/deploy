@@ -4,7 +4,9 @@
 echo __DIR__;
 
 foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    echo $file, "\n";
     if (file_exists($file)) {
+        echo "FOUND\n";
         define('CODEDEPLOYER_COMPOSER_INSTALL', $file);
 
         break;
