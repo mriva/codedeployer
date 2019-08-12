@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+echo __DIR__;
+
 foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
     if (file_exists($file)) {
         define('CODEDEPLOYER_COMPOSER_INSTALL', $file);
