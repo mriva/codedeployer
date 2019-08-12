@@ -13,9 +13,7 @@ class Deploy
         echo $rootDir, "\n";
 
         require $rootDir . '/deploy/config.php';
-        
-        die("By fire be purged\n\n");
-        $rootDir = __DIR__ . '/..';
+
         $exitCode = 1;
 
         try {
