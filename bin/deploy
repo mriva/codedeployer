@@ -27,7 +27,7 @@ if (isset($argv[1]) && $argv[1] == '--setup') {
     $deployDir = $rootDir . '/deploy/';
     if (!is_dir($deployDir)) {
         mkdir($deployDir);
-        exec("cp -a {$packageDir}/config/ {$deployDir}");
+        exec("cp -a {$packageDir}/config/* {$deployDir}");
     }
 
     echo "SETUP from $packageDir to $rootDir\n";
