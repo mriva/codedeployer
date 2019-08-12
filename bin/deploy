@@ -1,0 +1,4 @@
+<?php
+
+$deployer = new \Codedeployer\Deploy();
+$deployer->run();
