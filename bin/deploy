@@ -30,7 +30,7 @@ if (isset($argv[1]) && $argv[1] == '--setup') {
         exec("cp -a {$packageDir}/config/* {$deployDir}");
     }
 
-    echo "SETUP from $packageDir to $rootDir\n";
+    echo "Config files successfully installed\n";
     exit(0);
 }
 
