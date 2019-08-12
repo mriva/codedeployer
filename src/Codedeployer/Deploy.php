@@ -8,8 +8,9 @@ use Aws\S3\S3Client;
 
 class Deploy
 {
-    public function run()
+    public function run($rootDir)
     {
+        echo $rootDir, "\n";
         die("By fire be purged\n\n");
         $rootDir = __DIR__ . '/..';
         $exitCode = 1;
