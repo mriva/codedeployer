@@ -26,7 +26,7 @@ $reflection = new \ReflectionClass(ClassLoader::class);
 $rootDir = dirname($reflection->getFileName(), 3);
 
 if (isset($argv[1]) && $argv[1] == '--setup') {
-    echo "SETUP\n";
+    echo "SETUP in $rootDir\n";
     die("Setting up\n\n");
 }
 
