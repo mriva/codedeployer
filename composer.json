@@ -15,12 +15,6 @@
     "php": ">=7.0",
     "aws/aws-sdk-php": "^3.100"
   },
-  "bin": [
-    "bin/deploy"
-  ],
-  "config": {
-    "bin-dir": "bin"
-  },
   "autoload": {
     "psr-0": {
       "Codedeployer": "src/"
