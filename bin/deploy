@@ -11,7 +11,7 @@ foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.p
 
 unset($file);
 
-if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
+if (!defined('CODEDEPLOYER_COMPOSER_INSTALL')) {
     fwrite(STDERR,
         'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
         '    composer install' . PHP_EOL . PHP_EOL .
