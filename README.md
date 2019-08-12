@@ -1,5 +1,5 @@
 1. `composer require mriva/codedeployer`
-1. `bin/deploy --setuop`
+1. `bin/deploy --setup`
 1. create directories named as deployment groups
 1. add scripts inside deployment groups directories
 1. add `config.php`
