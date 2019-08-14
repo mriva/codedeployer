@@ -28,7 +28,11 @@ class Deploy
             /*
              * Get current git commit hash and save it to file
              */
-            $revision = trim(shell_exec("git rev-parse HEAD | tee {$rootDir}/deploy/deployed_revision"));
+//            $revision = trim(shell_exec("git rev-parse HEAD | tee {$rootDir}/deploy/deployed_revision"));
+            $revision = trim(shell_exec("git rev-parse HEAD"));
+            $timestampedRevision = date('Ymd_His') . "_{$revision}";
+            shell_exec("echo {$timestampedRevision} > {$rootDir}/deploy/deployed_revision");
+            die("By fire be purged\n\n");
             $archiveName = "{$revision}.tgz";
 
             $s3Client = new S3Client([
@@ -45,7 +49,7 @@ class Deploy
              * Create the application archive with the required appspec.yml file needed for the deployment
              */
             exec("cp {$rootDir}/deploy/appspec.yml {$rootDir}");
-            exec("cd {$rootDir} && tar -X {$rootDir}/deploy/tar_exclude --exclude {$archiveName} --exclude-vcs -zcf {$archiveName} ./*");
+            exec("cd {$rootDir} && tar --exclude {$archiveName} --exclude-vcs -zcf {$archiveName} ./*");
 
             /*
              * Send the archive to the S3 bucket
