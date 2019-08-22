@@ -4,12 +4,25 @@
 # The source is the temporary folder where Codedeploy stores the uncompressed archive of the current revision
 ARCHIVE_DIR="/opt/codedeploy-agent/deployment-root/${DEPLOYMENT_GROUP_ID}/${DEPLOYMENT_ID}/deployment-archive"
 
-### CREATE NEW RELEASE DIRECTORY
+# Create the directory for the new release
+TARGET_DEPLOY_DIR=
 
-### COPY TO NEW RELEASE DIRECTORY
+DEPLOY_SCRIPTS_DIR=$(dirname $0)
+REVISION=$(cat "${DEPLOY_SCRIPTS_DIR}/../deployed_revision")
 
-### RUN APP COMMANDS IN NEW RELEASE DIRECTORY
+NEW_REVISION_DIRECTORY="${TARGET_DEPLOY_DIR}/${REVISION}"
+mkdir -p "${NEW_REVISION_DIRECTORY}"
 
-### SYMLINK CURRENT TO NEW RELEASE
+# Copy files to the new directory
+rsync -a "${ARCHIVE_DIR}/" "${NEW_REVISION_DIRECTORY}"
 
-### DELETE OLD RELEASES
+# Shared things
+
+# Execute application scripts
+
+# Switch current release
+
+# Delete old releases
+(cd ${TARGET_DEPLOY_DIR} && /bin/ls -1 | head -n -5 | xargs rm -rf)
+
+#echo FATTO
