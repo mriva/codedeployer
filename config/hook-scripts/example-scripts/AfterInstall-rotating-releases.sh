@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##########################################
+# WARNING: THIS SCRIPT IS WIP DO NOT USE #
+##########################################
+
 # Build archive path from AWS Codedeploy environment variables
 # The source is the temporary folder where Codedeploy stores the uncompressed archive of the current revision
 ARCHIVE_DIR="/opt/codedeploy-agent/deployment-root/${DEPLOYMENT_GROUP_ID}/${DEPLOYMENT_ID}/deployment-archive"
@@ -25,4 +29,4 @@ rsync -a "${ARCHIVE_DIR}/" "${NEW_REVISION_DIRECTORY}"
 # Delete old releases
 (cd ${TARGET_DEPLOY_DIR} && /bin/ls -1 | head -n -5 | xargs rm -rf)
 
-#echo FATTO
+#echo Done.

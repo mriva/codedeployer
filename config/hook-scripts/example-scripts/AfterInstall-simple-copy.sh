@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Base AfterInstall script to use for in place copy of code from source to destination
+
 set -e
 
 # Build archive path from AWS Codedeploy environment variables
