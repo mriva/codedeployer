@@ -6,7 +6,8 @@ The deployment works like this:
 - an archive is created containing the codebase and a special `appspec.yml` file needed by Codedeploy
 - this archive is uploaded to S3
 - a series of calls is made to the Codedeploy API to initiate deployments
-- all ec2 instance with the Codedeployer agent installed continuously poll Codedeploy and start the deployment the we initiated
+- an agent installed on all supported instances polls Codedeploy waiting for deployment instructions
+- when the agent receives a deployment instruction, it downloads the archive from S3 and executes the steps defined in the `appspec.yml` file
 
 This process shifts the deployment from a push system like Idephix or Deployer that requires ssh access to machines in order to rsync the code, to a poll system where the instances are notified of a new deployment request by the agent and download the application archive, running all the configured scripts to complete the deployment.
 
