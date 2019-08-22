@@ -10,8 +10,6 @@ class Deploy
 {
     public function run($rootDir)
     {
-        echo $rootDir, "\n";
-
         require $rootDir . '/deploy/config.php';
 
         $exitCode = 1;
@@ -28,11 +26,10 @@ class Deploy
             /*
              * Get current git commit hash and save it to file
              */
-//            $revision = trim(shell_exec("git rev-parse HEAD | tee {$rootDir}/deploy/deployed_revision"));
             $revision = trim(shell_exec("git rev-parse HEAD"));
             $timestampedRevision = date('Ymd_His') . "_{$revision}";
             shell_exec("echo {$timestampedRevision} > {$rootDir}/deploy/deployed_revision");
-            die("By fire be purged\n\n");
+
             $archiveName = "{$revision}.tgz";
 
             $s3Client = new S3Client([
@@ -54,7 +51,7 @@ class Deploy
             /*
              * Send the archive to the S3 bucket
              */
-            $uploadResponse = $s3Client->putObject([
+            $s3Client->putObject([
                 'Bucket'     => 'it-soisy-deploy',
                 'Key'        => "{$applicationName}/{$archiveName}",
                 'SourceFile' => "{$rootDir}/{$archiveName}",

@@ -25,10 +25,12 @@ if (isset($argv[1]) && $argv[1] == '--setup') {
     $packageDir = dirname(__DIR__, 1);
 
     $deployDir = $rootDir . '/deploy/';
+
     if (!is_dir($deployDir)) {
         mkdir($deployDir);
-        exec("cp -a {$packageDir}/config/* {$deployDir}");
     }
+
+    exec("cp -a {$packageDir}/config/* {$deployDir}");
 
     echo "Config files successfully installed\n";
     exit(0);

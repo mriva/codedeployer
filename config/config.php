@@ -1,0 +1,6 @@
+<?php
+
+$applicationName = '';
+
+$deploymentGroups = [
+];
