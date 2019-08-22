@@ -29,6 +29,12 @@ deploy/
     ├── ec2-admin/
     └── ec2-frontend/
 ```
+Currently available instance groups are:
+- `ec2-admin`
+- `ec2-frontend`
+- `ec2-reports`
+- `ec2-sandbox`
+- `ec2-website`
 
 **Point 4** requires you to populate the directories from point 3.
 AWS Codedeploy offers various hooks during the process, here we use two of them:
