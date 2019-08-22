@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -xe
+set -e
 
 # Build archive path from AWS Codedeploy environment variables
 # The source is the temporary folder where Codedeploy stores the uncompressed archive of the current revision
