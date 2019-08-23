@@ -62,6 +62,8 @@ deploy/
 
 these script will be run by the main `hook-wrapper.sh` which is defined as the main hook in `appspec.yml`
 
+There are two example scripts ready to be usen with minimal configuration for simple copy and rotating releases deploy in the `config/hook-scripts/example-scripts/` directory.
+
 **Point 5** only requires you to compile a few application related options, the file should be self explanatory as well.
 
 ## TODO
