@@ -38,13 +38,10 @@ Currently available instance groups are:
 - `ec2-website`
 
 **Point 4** requires you to populate the directories from point 3.
-AWS Codedeploy offers various hooks during the process, here we use two of them:
-- `AfterInstall`
-- `ApplicationStart`
+AWS Codedeploy offers various hooks during the process, for simplicity we just use `AfterInstall` but other hooks can be easily added to `appspec.yml` if needed.
 
-`AfterInstall` is the first hook available and we use it to actually copy all the code to the real target directory.
-
-`ApplicationStart` is meant to run any command needed to have the application up again after the new code is copied. This is just a convention, you might also put all the code in `AfterInstall` for simplicity.
+`AfterInstall` is the first hook available and is run after the agent has downloaded and extracted the revision archive to a temporary directory;
+we use it to actually copy all the code to the real target directory and execute any post-install script that might be needed (ie. clearing cache, recreating snapshots, etc).
 
 For more information on AWS Codedeploy hooks see: https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-server
 
