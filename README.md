@@ -22,20 +22,14 @@ This process shifts the deployment from a push system like Idephix or Deployer t
 **Point 1** and **2** are self explanatory.
 
 **Point 3** requires you to create a directory under `deploy/hook-script` for each instance group you want to deploy to.
-For example, if you wish to deploy to `admin` and `frontend` instances, the tree will look like this:
+For example, if you wish to deploy to `alfa` and `beta` instance groups, the tree will look like this:
 
 ```
 deploy/
 └── hook-scripts/
-    ├── ec2-admin/
-    └── ec2-frontend/
+    ├── ec2-alfa/
+    └── ec2-beta/
 ```
-Currently available instance groups are:
-- `ec2-admin`
-- `ec2-frontend`
-- `ec2-reports`
-- `ec2-sandbox`
-- `ec2-website`
 
 **Point 4** requires you to populate the directories from point 3.
 AWS Codedeploy offers various hooks during the process, for simplicity the default setup only uses `AfterInstall` but other hooks can be easily added to `appspec.yml` if needed.
@@ -50,9 +44,9 @@ Now add scripts in those directories named after these hooks, so assuming you go
 ```
 deploy/
 └── hook-scripts/
-    ├── ec2-admin/
+    ├── ec2-alfa/
     │   └── AfterInstall.sh
-    └── ec2-frontend/
+    └── ec2-beta/
         └── AfterInstall.sh
 
 ```
